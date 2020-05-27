@@ -16,11 +16,19 @@
 package com.example.android.quakereport;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+
+import static com.example.android.quakereport.R.layout.list_view_earthquakes;
 
 public class EarthquakeActivity extends AppCompatActivity {
 
@@ -41,15 +49,34 @@ public class EarthquakeActivity extends AppCompatActivity {
         earthquakes.add("Rio de Janeiro");
         earthquakes.add("Paris");
 
-        // Find a reference to the {@link ListView} in the layout
-        ListView earthquakeListView = (ListView) findViewById(R.id.list);
-
         // Create a new {@link ArrayAdapter} of earthquakes
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_list_item_1, earthquakes);
 
+
+
+        //step 2, add from Query utils
+        ArrayList<Earthquake> earthquakes2;
+        earthquakes2 = QueryUtils.extractEarthquakes();
+
+
+
+
+        //Override old adapter to use new.
+        final EarthQuakeAdapter earthquakeEarthQuakeAdapter;
+        earthquakeEarthQuakeAdapter = new EarthQuakeAdapter(
+                this, earthquakes2);
+
+        // Find a reference to the {@link ListView} in the layout
+        ListView earthquakeListView;
+        earthquakeListView = (ListView) findViewById(R.id.EarthquakeListView);
+
+        // todo: get .setAdapter(..) to work
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
-        earthquakeListView.setAdapter(adapter);
+        earthquakeListView.setAdapter(earthquakeEarthQuakeAdapter);
+
+        
     }
 }
