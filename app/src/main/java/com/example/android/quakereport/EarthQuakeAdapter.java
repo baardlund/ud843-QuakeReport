@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 import java.util.ArrayList;
 
 public class EarthQuakeAdapter extends ArrayAdapter<Earthquake> {
@@ -28,26 +26,26 @@ public class EarthQuakeAdapter extends ArrayAdapter<Earthquake> {
         }
 
         //Lookup view for datapopulation
-        TextView lm = (TextView) convertView.findViewById(R.id.list_item_magnitude);
-        TextView m = (TextView) convertView.findViewById(R.id.magnitude);
-        TextView ll = (TextView) convertView.findViewById(R.id.list_item_location);
-        TextView l = (TextView) convertView.findViewById(R.id.location);
-        TextView ld = (TextView) convertView.findViewById(R.id.list_item_date);
-        TextView d = (TextView) convertView.findViewById(R.id.date);
-        TextView lu = (TextView) convertView.findViewById(R.id.list_item_url);
-        TextView u = (TextView) convertView.findViewById(R.id.url);
+        TextView lm = convertView.findViewById(R.id.list_item_magnitude);
+        TextView m = convertView.findViewById(R.id.magnitude);
+        TextView ll = convertView.findViewById(R.id.list_item_location);
+        TextView l = convertView.findViewById(R.id.location);
+        TextView ld = convertView.findViewById(R.id.list_item_date);
+        TextView d = convertView.findViewById(R.id.date);
+        TextView lu = convertView.findViewById(R.id.list_item_url);
+        TextView u = convertView.findViewById(R.id.url);
 
         lm.setText(R.string.list_item_magnitude);
         m.setText(String.valueOf(ea.getMagnitude()));
 
-        lm.setText(R.string.location);
-        m.setText(String.valueOf(ea.getLocation()));
+        ll.setText(R.string.list_item_location);
+        l.setText(String.valueOf(ea.getLocation()));
 
-        lm.setText(R.string.list_item_date);
-        m.setText(String.valueOf(ea.getDate()));
+        ld.setText(R.string.list_item_date);
+        d.setText(String.valueOf(ea.getDate()));
 
-        lm.setText(R.string.list_item_url);
-        m.setText(String.valueOf(ea.getUrl()));
+        lu.setText(R.string.list_item_url);
+        u.setText(String.valueOf(ea.getUrl()));
 
         return convertView;
     }

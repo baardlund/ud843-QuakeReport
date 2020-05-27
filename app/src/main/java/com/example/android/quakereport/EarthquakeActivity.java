@@ -16,19 +16,12 @@
 package com.example.android.quakereport;
 
 import android.os.Bundle;
-
-
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-
-import static com.example.android.quakereport.R.layout.list_view_earthquakes;
 
 public class EarthquakeActivity extends AppCompatActivity {
 
@@ -70,9 +63,8 @@ public class EarthquakeActivity extends AppCompatActivity {
 
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView;
-        earthquakeListView = (ListView) findViewById(R.id.EarthquakeListView);
+        earthquakeListView = findViewById(R.id.list);
 
-        // todo: get .setAdapter(..) to work
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
         earthquakeListView.setAdapter(earthquakeEarthQuakeAdapter);
