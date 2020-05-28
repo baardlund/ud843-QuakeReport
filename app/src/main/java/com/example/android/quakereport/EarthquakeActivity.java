@@ -15,9 +15,15 @@
  */
 package com.example.android.quakereport;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +32,8 @@ import java.util.ArrayList;
 public class EarthquakeActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
+    static final String ACTION_GO_TO_URL = "com.example.action.GO_TO_URL";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +73,27 @@ public class EarthquakeActivity extends AppCompatActivity {
         ListView earthquakeListView;
         earthquakeListView = findViewById(R.id.list);
 
+
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
         earthquakeListView.setAdapter(earthquakeEarthQuakeAdapter);
+        earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        
+                String value =  parent.getItemAtPosition(position).toString();
+                Toast toast = Toast.makeText(getApplicationContext(), "You pressed + " + value, Toast.LENGTH_LONG);
+                toast.setMargin(70, 50);
+                toast.show();
+                Uri uri = Uri.parse(value);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 }
+
+

@@ -103,11 +103,6 @@ public class Earthquake {
 
     @Override
     public String toString() {
-        return "Earthquake{" +
-                "magnitude=" + magnitude +
-                ", location='" + location + '\'' +
-                ", date=" + date +
-                ", url='" + url + '\'' +
-                '}';
+        return url;
     }
 }

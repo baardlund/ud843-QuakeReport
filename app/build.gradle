@@ -27,4 +27,5 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     // For loading and tinting drawables on older versions of the platform
     implementation "androidx.appcompat:appcompat-resources:$appcompat_version"
+    implementation 'org.jetbrains:annotations-java5:15.0'
 }
